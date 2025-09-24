@@ -22,14 +22,12 @@
 struct config;
 typedef std::vector<jack_default_audio_sample_t> audio_buffer_t;
 
-int get_jack_period(const struct config* cfg);
+int get_jack_period(const struct config *cfg);
 
-bool connect_input_ports(jack_client_t* client,
-                         jack_port_t*   output_port,
-                         const char*    input_port_regex);
+bool connect_input_ports(jack_client_t *client, jack_port_t *output_port,
+                         const char *input_port_regex);
 
-bool read_wav_file(const char*     filepath,
-                   jack_nframes_t  jack_sample_rate,
-                   audio_buffer_t& buffer_out);
+bool read_wav_file(const char *filepath, jack_nframes_t jack_sample_rate,
+                   audio_buffer_t &buffer_out);
 
 #endif
