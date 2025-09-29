@@ -1,0 +1,74 @@
+# -----------------------------------------------------------------------------
+# A secure, modern C++ formatting configuration based on the LLVM style.
+#
+# Goal: Create highly readable, consistent, and unambiguous code. This helps
+# developers spot bugs and potential security issues during code review.
+#
+# Place this file as ".clang-format" in your project's root directory.
+# -----------------------------------------------------------------------------
+
+# We are formatting C++ code.
+Language: Cpp
+
+# Start with the LLVM style and customize from there.
+BasedOnStyle: LLVM
+
+# --- Readability & Layout ---
+
+# Set a slightly wider column limit for modern displays.
+# The LLVM default of 80 is a bit restrictive today.
+ColumnLimit: 100
+
+# Use the "Allman" style for braces (braces on new lines).
+# This makes code blocks visually distinct and easier to read.
+# Good:                         Bad (Attached):
+# if (condition) {              if (condition) {
+#   ...                           ...
+# }                             }
+BreakBeforeBraces: Allman
+
+# Always break constructor initializers onto new lines if they don't fit on one.
+# This prevents long, unreadable single lines.
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+
+# Allow putting short functions on a single line. None is the safest default.
+AllowShortFunctionsOnASingleLine: None
+
+# Keep blocks (if, for, etc.) from collapsing into a single line.
+AllowShortBlocksOnASingleLine: false
+
+# Don't collapse simple case statements into one line.
+AllowShortCaseLabelsOnASingleLine: false
+
+# --- Indentation ---
+
+# Use 4 spaces for indentation. This is a common standard.
+IndentWidth: 4
+TabWidth: 4
+
+# Never use hardware tabs. Always use spaces for consistent rendering.
+UseTab: Never
+
+# --- Pointers & References ---
+
+# Align pointers and references to the right, with the variable name.
+# This is the standard LLVM style and emphasizes the variable over the type.
+# Good: int* ptr;
+# Bad:  int *ptr;
+PointerAlignment: Right
+
+# --- Include Directives ---
+
+# Automatically sort #include directives. This keeps headers clean,
+# prevents merge conflicts, and makes it easy to find what's included.
+SortIncludes: true
+
+# --- Whitespace ---
+
+# Insert a space after C-style casts like (int)x. Improves readability.
+SpaceAfterCStyleCast: true
+
+# Add a space before opening parenthesis in control statements (if, for, while).
+# Good: if (condition) ...
+# Bad:  if(condition) ...
+SpaceBeforeParens: ControlStatements
